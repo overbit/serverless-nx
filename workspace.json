@@ -1,0 +1,96 @@
+{
+  "version": 2,
+  "cli": {
+    "defaultCollection": "@ns3/nx-serverless"
+  },
+  "projects": {
+    "todo": {
+      "root": "apps/todo",
+      "projectType": "application",
+      "sourceRoot": "apps/todo/src",
+      "targets": {
+        "build": {
+          "executor": "@ns3/nx-serverless:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "apps/todo/.serverless"
+          }
+        },
+        "serve": {
+          "executor": "@ns3/nx-serverless:serve",
+          "options": {
+            "out": "../../dist/out-tsc/apps/todo"
+          }
+        },
+        "deploy": {
+          "executor": "@ns3/nx-serverless:deploy",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "apps/todo/.serverless"
+          }
+        },
+        "remove": {
+          "executor": "@ns3/nx-serverless:remove"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/todo"],
+          "options": {
+            "jestConfig": "apps/todo/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/todo/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
+    "user": {
+      "root": "apps/user",
+      "projectType": "application",
+      "sourceRoot": "apps/user/src",
+      "targets": {
+        "build": {
+          "executor": "@ns3/nx-serverless:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "apps/user/.serverless"
+          }
+        },
+        "serve": {
+          "executor": "@ns3/nx-serverless:serve",
+          "options": {
+            "out": "../../dist/out-tsc/apps/user"
+          }
+        },
+        "deploy": {
+          "executor": "@ns3/nx-serverless:deploy",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "apps/user/.serverless"
+          }
+        },
+        "remove": {
+          "executor": "@ns3/nx-serverless:remove"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/user"],
+          "options": {
+            "jestConfig": "apps/user/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/user/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    }
+  }
+}
