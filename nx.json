@@ -9,7 +9,7 @@
   "affected": {
     "defaultBase": "master"
   },
-  "npmScope": "telegraph",
+  "npmScope": "serverless-nx",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
@@ -19,6 +19,12 @@
     }
   },
   "projects": {
+    "aws-samples": {
+      "tags": []
+    },
+    "logger": {
+      "tags": []
+    },
     "todo": {
       "tags": []
     },

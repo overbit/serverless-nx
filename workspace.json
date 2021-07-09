@@ -4,6 +4,71 @@
     "defaultCollection": "@ns3/nx-serverless"
   },
   "projects": {
+    "aws-samples": {
+      "root": "apps/aws-samples",
+      "projectType": "application",
+      "sourceRoot": "apps/aws-samples/src",
+      "targets": {
+        "build": {
+          "executor": "@ns3/nx-serverless:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "apps/aws-samples/.serverless"
+          }
+        },
+        "serve": {
+          "executor": "@ns3/nx-serverless:serve",
+          "options": {
+            "out": "../../dist/out-tsc/apps/aws-samples"
+          }
+        },
+        "deploy": {
+          "executor": "@ns3/nx-serverless:deploy",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "apps/aws-samples/.serverless"
+          }
+        },
+        "remove": {
+          "executor": "@ns3/nx-serverless:remove"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/aws-samples"],
+          "options": {
+            "jestConfig": "apps/aws-samples/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/aws-samples/src/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
+    "logger": {
+      "root": "libs/logger",
+      "sourceRoot": "libs/logger/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/logger/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/logger"],
+          "options": {
+            "jestConfig": "libs/logger/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "todo": {
       "root": "apps/todo",
       "projectType": "application",

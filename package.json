@@ -1,5 +1,5 @@
 {
-  "name": "telegraph",
+  "name": "serverless-nx",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -27,6 +27,8 @@
   },
   "private": true,
   "dependencies": {
+    "@aws-sdk/client-ssm": "^3.20.0",
+    "@dazn/lambda-powertools-logger": "^1.28.1",
     "serverless-http": "^2.6.1",
     "tslib": "^2.0.0"
   },
@@ -35,6 +37,7 @@
     "@nrwl/eslint-plugin-nx": "12.3.3",
     "@nrwl/jest": "12.3.3",
     "@nrwl/linter": "12.3.3",
+    "@nrwl/node": "^12.5.7",
     "@nrwl/tao": "12.3.3",
     "@nrwl/workspace": "12.3.3",
     "@ns3/nx-serverless": "^0.6.2",

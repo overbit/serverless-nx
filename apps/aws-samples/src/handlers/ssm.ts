@@ -1,10 +1,10 @@
 import { Handler } from 'serverless-http';
 import { SSMClient, GetParameterCommand } from "@aws-sdk/client-ssm";
+import { logger } from '@serverless-nx/logger';
 
 export const handler: Handler = async (event, context) => {
-  console.log(event)
   const params = {
-    Name: '/application/services_products/test/srv-products-test/password', /* required */
+    Name: process.env.SSM_PARAMTER, /* required */
     WithDecryption: true
   }
   const client = new SSMClient({});
@@ -13,10 +13,10 @@ export const handler: Handler = async (event, context) => {
   try {
     const data = await client.send(command);
     // process data.
-    console.log(data.Parameter?.Value);
+    logger.info(data.Parameter.Value);
   } catch (error) {
     // error handling.
-    console.log(error, error.stack)
+    logger.error(error)
   } finally {
     // finally.
   }

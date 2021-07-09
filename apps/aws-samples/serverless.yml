@@ -1,4 +1,4 @@
-service: todo
+service: aws-samples
 
 plugins:
   - serverless-bundle
@@ -17,9 +17,9 @@ provider:
   name: aws
   region: eu-west-1
   runtime: nodejs12.x
+  memorySize: 256
   stage: ${self:custom.stage}
   endpointType: regional
-  memorySize: 256
   timeout: 20
   lambdaHashingVersion: 20201221 # removes deprecation warning (remove in serverless v3)
   apiGateway:
@@ -38,9 +38,11 @@ provider:
           Resource: !Sub "arn:aws:ssm:${self:provider.region}:${AWS::AccountId}:parameter/application/services_products/*"
 
 functions:
-  foo:
-    handler: src/handlers/foo.handler
+  ssm:
+    handler: src/handlers/ssm.handler
+    environment:
+      SSM_PARAMTER: '/application/services_products/test/srv-products-test/password'
     events:
       - http:
           method: GET
-          path: /foo
+          path: /ssm
