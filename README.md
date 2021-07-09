@@ -1,6 +1,6 @@
 
 
-# Telegraph
+# Serverless-nx
 
 This project was generated using [Nx](https://nx.dev).
 
